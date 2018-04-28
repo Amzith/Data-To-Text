@@ -101,28 +101,58 @@ for cityname, numbers in city_information.items():
     #sortingdensity -----------
     sentences.append(cityname)
     if float(popdens) > (average + 2):
-        sentences.append("a high population density of " + popdens + " per km2")
+        dens = [("a high population density of " + popdens + " per km2"),
+                ("a population density of " + popdens + " per km2"),
+                ("a high amount of people per km2, " + popdens),
+                ("a high population density")
+                ]
+        sentences.append(random.choice(dens))
     elif float(popdens) < (average - 2):
-        sentences.append( "a low population density of " + popdens  + " per km2")
+        dens = [( "a low population density of " + popdens  + " per km2"),
+                ("a below average population density of " + popdens + " per km2"),
+                ("a population density of " + popdens + " per km2"),
+                ("a low population density")]
+        sentences.append(random.choice(dens))
     else:
-        sentences.append( "an average population density of " + popdens  + " per km2")
+        dens = [( "an average population density of " + popdens  + " per km2"),
+                ("a population density of " + popdens + " per km2, which is average,"),
+                ("an average population density")]
+        sentences.append(random.choice(dens))
 
         # employment sentence ---------------
     if percenwork > (percenavwork + 2):
-        sentences.append(
-            "a high employment rate of " + str(round(percenwork, 1)) + "% of the population economically active")
+        employy = [(
+            "a high employment rate of " + str(round(percenwork, 1)) + "% of the population economically active"),
+            ("a high employment rate of " + str(round(percenwork, 1)) + "%"), (str(round(percenwork, 1))
+            + "% of the population economically active, which is higher than the average"),
+            ("a high employment rate"), ("a very low number of unemployed"), ("a high amount of employed people"), ("a low unemployment, where " + str(round(percenwork,1)) + "% of people work")]
+        sentences.append(random.choice(employy))
     elif percenwork < (percenavwork - 2):
-        sentences.append(
-            "a low employment rate of " + str(round(percenwork, 1)) + "% of the population economically active")
+        employy = [(
+            "a low employment rate of " + str(round(percenwork, 1)) + "% of the population economically active"),
+            ("a low employment rate of " + str(round(percenwork, 1)) + "%, compared to the average of " + str(round(percenavwork))
+             + "%"), (str(round(percenwork, 1)) + "% of the population economically active"),
+            ("a low employment rate"), ("a high amount of unemployed"), ("a poor amount of employed people"),
+            ("Only " + str(round(percenwork, 1)) + "% of people are even employed")]
+
+        sentences.append(random.choice(employy))
     else:
-        sentences.append(
-            "an average employment rate of " + str(round(percenwork, 1)) + "% of the population economically active")
+        employy = [(
+            "an average employment rate of " + str(round(percenwork, 1)) + "% of the population economically active"),
+            (str(round(percenwork, 1)) + "% of the population economically active, which remains average"),
+            ("with the employment rates falling under average"), ("with an average employment rate"),
+            ("with " + str(round(percenwork, 1)) + "% of people working"), ("an average number people employed"),
+            ("a normal percentage of people working (" + str(round(percenwork, 1)) + "%)"), ("7 out of 10 people employed"), ("a average employmenet rate, which is roughly 7 out of 10 people employed")]
+        sentences.append(random.choice(employy))
 
 
     #assign a sentence for health ----------
     if percenhealth > (avscotghealth + 2):
         if percenbhealth > (avscotbhealth + 2):
-            hhhealth = [("a high amount of very healthy people of " + str(round(percenhealth,1)) + "%, despite also having a high rate of poor health of " + str(round(percenbhealth,1))), ("many people with very bad health of " + str(round(percenbhealth,1)) + "%, in contrast to the high rate of very healthy people")]
+            hhhealth = [("a high amount of very healthy people of " + str(round(percenhealth,1))
+                         + "%, despite also having a high rate of poor health of " + str(round(percenbhealth,1))),
+                        ("many people with very bad health of " + str(round(percenbhealth,1))
+                         + "%, in contrast to the high rate of very healthy people")]
             sentences.append(random.choice(hhhealth))
         elif percenbhealth < (avscotbhealth - 2):
             hhhealth = [("a high amount of very healthy people of " + str(
@@ -187,5 +217,6 @@ for cityname, numbers in city_information.items():
     file = open("text.txt","a")
     file.write(str(''.join(sentences))+ "\n" + "\n")
 file.close()
+
 
 
