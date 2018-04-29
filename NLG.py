@@ -26,6 +26,7 @@ for city in health:
     name = city[0]
     population = city[1]
     VgoodH = city[2]
+    VgoodH += city[3] # very good or good health
     VbadH = city[6]
     city_information[name] = []
     city_information[name].append(population)
