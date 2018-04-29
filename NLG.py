@@ -25,13 +25,14 @@ city_information = {}  # [Population, Amount of Very Healthy people, Unhealthy p
 for city in health:
     name = city[0]
     population = city[1]
-    VgoodH = city[2]
-    VgoodH += city[3] # very good or good health
+    VgoodH = float(city[2].replace(',', ''))
+    VgoodH += float(city[3].replace(',', '')) # very good or good health
     VbadH = city[6]
     city_information[name] = []
     city_information[name].append(population)
     city_information[name].append(VgoodH)
     city_information[name].append(VbadH)
+
 # -----------------------------------
 
 # Economic Activity -----------------
@@ -77,7 +78,7 @@ for city in density:
 scotemployed = city_information["Scotland"][4].replace(',', '')
 scotworkinage = city_information["Scotland"][3].replace(',', '')
 scotbhealth = city_information["Scotland"][2].replace(',', '')
-scotghealth = city_information["Scotland"][1].replace(',', '')
+scotghealth = city_information["Scotland"][1]
 scotpop = city_information["Scotland"][0].replace(',','')
 percenavwork = (float(scotemployed)/float(scotworkinage))*100
 avscotbhealth = (float(scotbhealth)/float(scotpop))*100
@@ -89,7 +90,7 @@ for cityname, numbers in city_information.items():
 
     #assign variables to the values ------
     pop = numbers[0].replace(',', '')
-    health = numbers[1].replace(',', '')
+    health = numbers[1]
     bhealth = numbers[2].replace(',', '')
     workinage = numbers[3].replace(',', '')
     employed = numbers[4].replace(',', '')
